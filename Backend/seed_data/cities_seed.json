@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Delhi",
+        "state": "Delhi",
+        "description": "India's historic capital with magnificent Mughal architecture and vibrant culture",
+        "image_url": "/assets/images/cities/delhi.jpg",
+        "badge": "Heritage Capital",
+        "best_season": "October-March",
+        "avg_budget_per_day": 1500,
+        "recommended_days": "3-5 days",
+        "latitude": 28.6139,
+        "longitude": 77.2090,
+        "category": "heritage"
+    },
+    {
+        "name": "Goa",
+        "state": "Goa",
+        "description": "Sun-kissed beaches, Portuguese heritage, and vibrant nightlife",
+        "image_url": "/assets/images/cities/goa.jpg",
+        "badge": "Beach Paradise",
+        "best_season": "November-February",
+        "avg_budget_per_day": 2000,
+        "recommended_days": "4-7 days",
+        "latitude": 15.2993,
+        "longitude": 74.1240,
+        "category": "beach"
+    },
+    {
+        "name": "Jaipur",
+        "state": "Rajasthan",
+        "description": "Royal palaces, majestic forts, and colorful bazaars of Rajasthan",
+        "image_url": "/assets/images/cities/jaipur.jpg",
+        "badge": "Pink City",
+        "best_season": "October-March",
+        "avg_budget_per_day": 1600,
+        "recommended_days": "2-4 days",
+        "latitude": 26.9124,
+        "longitude": 75.7873,
+        "category": "heritage"
+    },
+    {
+        "name": "Mumbai",
+        "state": "Maharashtra",
+        "description": "India's financial capital with Bollywood glamour and colonial architecture",
+        "image_url": "/assets/images/cities/mumbai.jpg",
+        "badge": "City of Dreams",
+        "best_season": "November-February",
+        "avg_budget_per_day": 2500,
+        "recommended_days": "3-5 days",
+        "latitude": 19.0760,
+        "longitude": 72.8777,
+        "category": "metro"
+    },
+    {
+        "name": "Kerala",
+        "state": "Kerala",
+        "description": "God's Own Country with backwaters, beaches, and lush greenery",
+        "image_url": "/assets/images/cities/kerala.jpg",
+        "badge": "God's Own Country",
+        "best_season": "September-March",
+        "avg_budget_per_day": 1800,
+        "recommended_days": "5-7 days",
+        "latitude": 10.8505,
+        "longitude": 76.2711,
+        "category": "nature"
+    }
+]

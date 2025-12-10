@@ -1,0 +1,445 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore 12+ incredible Indian cities - Delhi, Mumbai, Goa, Jaipur, Kerala, Bangalore and more. Complete travel guide with budget info and attractions.">
+    <title>Explore Indian Cities | Smart City Guide</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../assets/css/fonts.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <i class="fas fa-city"></i>
+                <span>Smart<span style="font-weight: 800;">CityGuide</span></span>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="cities.html" class="nav-link active">Cities</a>
+                <a href="features.html" class="nav-link">Features</a>
+                <a href="itinerary.html" class="nav-link">Itinerary</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+
+                <div class="nav-buttons">
+                    <button class="btn-login" onclick="window.location.href='login.html'">
+                        <i class="fas fa-user"></i> Login
+                    </button>
+                    <button class="btn-signup" onclick="window.location.href='signup.html'">
+                        <i class="fas fa-user-plus"></i> Sign Up
+                    </button>
+                </div>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div
+        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 120px 0 60px; text-align: center; color: white;">
+        <div class="container">
+            <h1 style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem;">Explore Amazing Indian Cities</h1>
+            <p style="font-size: 1.2rem; opacity: 0.95; max-width: 600px; margin: 0 auto;">Discover incredible
+                destinations across India with detailed guides and insider tips</p>
+        </div>
+    </div>
+
+    <!-- Cities Grid -->
+    <section class="section">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+
+                <!-- Delhi -->
+                <div class="city-card" id="delhi">
+                    <div class="city-image" style="background-image: url('../assets/images/cities/delhi.jpg')">
+                        <div class="city-badge">Heritage Capital</div>
+                    </div>
+                    <div class="city-content">
+                        <h3 class="city-name">Delhi</h3>
+                        <p class="city-desc">India's historic capital with magnificent Mughal architecture, vibrant
+                            street food, and rich cultural heritage</p>
+                        <div class="city-info">
+                            <span class="city-stat"><i class="fas fa-clock"></i> 3-5 days</span>
+                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> â‚¹1500/day</span>
+                            <span class="city-stat"><i class="fas fa-sun"></i> Oct-Mar</span>
+                        </div>
+                        <div class="city-attractions">
+                            <span class="attraction-tag">Red Fort</span>
+                            <span class="attraction-tag">Qutub Minar</span>
+                            <span class="attraction-tag">India Gate</span>
+                            <span class="attraction-tag">Lotus Temple</span>
+                        </div>
+                        <button class="btn-city" onclick="alert('Booking feature coming soon for Delhi!')">
+                            <i class="fas fa-map-marked-alt"></i> Book Trip to Delhi
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mumbai -->
+                <div class="city-card" id="mumbai">
+                    <div class="city-image" style="background-image: url('../assets/images/cities/mumbai.jpg')">
+                        <div class="city-badge">City of Dreams</div>
+                    </div>
+                    <div class="city-content">
+                        <h3 class="city-name">Mumbai</h3>
+                        <p class="city-desc">Bustling metropolis with colonial architecture, Bollywood glamour, and
+                            vibrant nightlife</p>
+                        <div class="city-info">
+                            <span class="city-stat"><i class="fas fa-clock"></i> 4-6 days</span>
+                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> â‚¹2500/day</span>
+                            <span class="city-stat"><i class="fas fa-sun"></i> Oct-Feb</span>
+                        </div>
+                        <div class="city-attractions">
+                            <span class="attraction-tag">Gateway of India</span>
+                            <span class="attraction-tag">Marine Drive</span>
+                            <span class="attraction-tag">Elephanta Caves</span>
+                            <span class="attraction-tag">Colaba</span>
+                        </div>
+                        <button class="btn-city" onclick="alert('Booking feature coming soon for Mumbai!')">
+                            <i class="fas fa-map-marked-alt"></i> Book Trip to Mumbai
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Goa -->
+                <div class="city-card" id="goa">
+                    <div class="city-image" style="background-image: url('../assets/images/cities/goa.jpg')">
+                        <div class="city-badge">Beach Paradise</div>
+                    </div>
+                    <div class="city-content">
+                        <h3 class="city-name">Goa</h3>
+                        <p class="city-desc">Sun-kissed beaches, Portuguese heritage, vibrant nightlife, and water
+                            sports paradise</p>
+                        <div class="city-info">
+                            <span class="city-stat"><i class="fas fa-clock"></i> 4-7 days</span>
+                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> â‚¹2000/day</span>
+                            <span class="city-stat"><i class="fas fa-sun"></i> Nov-Feb</span>
+                        </div>
+                        <div class="city-attractions">
+                            <span class="attraction-tag">Baga Beach</span>
+                            <span class="attraction-tag">Fort Aguada</span>
+                            <span class="attraction-tag">Dudhsagar Falls</span>
+                            <span class="attraction-tag">Old Goa</span>
+                        </div>
+                        <button class="btn-city" onclick="alert('Booking feature coming soon for Goa!')">
+                            <i class="fas fa-map-marked-alt"></i> Book Trip to Goa
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Jaipur -->
+                <div class="city-card" id="jaipur">
+                    <div class="city-image" style="background-image: url('../assets/images/cities/jaipur.jpg')">
+                        <div class="city-badge">Pink City</div>
+                    </div>
+                    <div class="city-content">
+                        <h3 class="city-name">Jaipur</h3>
+                        <p class="city-desc">Royal palaces, majestic forts, colorful bazaars, and rich Rajasthani
+                            culture</p>
+                        <div class="city-info">
+                            <span class="city-stat"><i class="fas fa-clock"></i> 2-4 days</span>
+                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> â‚¹1600/day</span>
+                            <span class="city-stat"><i class="fas fa-sun"></i> Oct-Mar</span>
+                        </div>
+                        <div class="city-attractions">
+                            <span class="attraction-tag">Hawa Mahal</span>
+                            <span class="attraction-tag">Amber Fort</span>
+                            <span class="attraction-tag">City Palace</span>
+                            <span class="attraction-tag">Jantar Mantar</span>
+                        </div>
+                        <button class="btn-city" onclick="alert('Booking feature coming soon for Jaipur!')">
+                            <i class="fas fa-map-marked-alt"></i> Book Trip to Jaipur
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bangalore -->
+                <div class="city-card" id="bangalore">
+                    <div class="city-image" style="background-image: url('../assets/images/cities/bangalore.jpg')">
+                        <div class="city-badge">Tech Hub</div>
+                    </div>
+                    <div class="city-content">
+                        <h3 class="city-name">Bangalore</h3>
+                        <p class="city-desc">Silicon Valley of India with pleasant weather, gardens, and vibrant pub
+                            culture</p>
+                        <div class="city-info">
+                            <span class="city-stat"><i class="fas fa-clock"></i> 3-5 days</span>
+                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> â‚¹2200/day</span>
+                            <span class="city-stat"><i class="fas fa-cloud-sun"></i> All Year</span>
+                        </div>
+                        <div class="city-attractions">
+                            <span class="attraction-tag">Lalbagh</span>
+                            <span class="attraction-tag">Cubbon Park</span>
+                            <span class="attraction-tag">Bangalore Palace</span>
+                            <span class="attraction-tag">MG Road</span>
+                        </div>
+                        <button class="btn-city" onclick="alert('Booking feature coming soon for Bangalore!')">
+                            <i class="fas fa-map-marked-alt"></i> Book Trip to Bangalore
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Kerala -->
+                <div class="city-card" id="kerala">
+                    <div class="city-image" style="background-image: url('../assets/images/cities/kerala.jpg')">
+                        <div class="city-badge">God's Own Country</div>
+                    </div>
+                    <div class="city-content">
+                        <h3 class="city-name">Kerala</h3>
+                        <p class="city-desc">Serene backwaters, lush tea plantations, Ayurvedic treatments, and pristine
+                            beaches</p>
+                        <div class="city-info">
+                            <span class="city-stat"><i class="fas fa-clock"></i> 5-7 days</span>
+                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> â‚¹1800/day</span>
+                            <span class="city-stat"><i class="fas fa-cloud-rain"></i> Oct-Feb</span>
+                        </div>
+                        <div class="city-attractions">
+                            <span class="attraction-tag">Alleppey Backwaters</span>
+                            <span class="attraction-tag">Munnar</span>
+                            <span class="attraction-tag">Kovalam Beach</span>
+                            <span class="attraction-tag">Kochi</span>
+                        </div>
+                        <button class="btn-city" onclick="alert('Booking feature coming soon for Kerala!')">
+                            <i class="fas fa-map-marked-alt"></i> Book Trip to Kerala
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Agra -->
+                <div class="city-card" id="agra">
+                    <div class="city-image" style="background-image: url('../assets/images/cities/agra.jpg')">
+                        <div class="city-badge">Monument City</div>
+                    </div>
+                    <div class="city-content">
+                        <h3 class="city-name">Agra</h3>
+                        <p class="city-desc">Home to the iconic Taj Mahal, one of the Seven Wonders of the World</p>
+                        <div class="city-info">
+                            <span class="city-stat"><i class="fas fa-clock"></i> 1-2 days</span>
+                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> â‚¹1200/day</span>
+                            <span class="city-stat"><i class="fas fa-sun"></i> Oct-Mar</span>
+                        </div>
+                        <div class="city-attractions">
+                            <span class="attraction-tag">Taj Mahal</span>
+                            <span class="attraction-tag">Agra Fort</span>
+                            <span class="attraction-tag">Fatehpur Sikri</span>
+                            <span class="attraction-tag">Mehtab Bagh</span>
+                        </div>
+                        <button class="btn-city" onclick="alert('Booking feature coming soon for Agra!')">
+                            <i class="fas fa-map-marked-alt"></i> Book Trip to Agra
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Udaipur -->
+                <div class="city-card" id="udaipur">
+                    <div class="city-image" style="background-image: url('../assets/images/cities/udaipur.jpg')">
+                        <div class="city-badge">City of Lakes</div>
+                    </div>
+                    <div class="city-content">
+                        <h3 class="city-name">Udaipur</h3>
+                        <p class="city-desc">Venice of the East with stunning lakes, palaces, and romantic sunset views
+                        </p>
+                        <div class="city-info">
+                            <span class="city-stat"><i class="fas fa-clock"></i> 2-3 days</span>
+                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> â‚¹1700/day</span>
+                            <span class="city-stat"><i class="fas fa-sun"></i> Sep-Mar</span>
+                        </div>
+                        <div class="city-attractions">
+                            <span class="attraction-tag">Lake Palace</span>
+                            <span class="attraction-tag">City Palace</span>
+                            <span class="attraction-tag">Jag Mandir</span>
+                            <span class="attraction-tag">Fateh Sagar</span>
+                        </div>
+                        <button class="btn-city" onclick="alert('Booking feature coming soon for Udaipur!')">
+                            <i class="fas fa-map-marked-alt"></i> Book Trip to Udaipur
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Varanasi -->
+                <div class="city-card" id="varanasi">
+                    <div class="city-image" style="background-image: url('../assets/images/cities/varanasi.jpg')">
+                        <div class="city-badge">Spiritual Capital</div>
+                    </div>
+                    <div class="city-content">
+                        <h3 class="city-name">Varanasi</h3>
+                        <p class="city-desc">Ancient spiritual city on the Ganges with mesmerizing Ganga Aarti
+                            ceremonies</p>
+                        <div class="city-info">
+                            <span class="city-stat"><i class="fas fa-clock"></i> 2-3 days</span>
+                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> â‚¹1200/day</span>
+                            <span class="city-stat"><i class="fas fa-snowflake"></i> Oct-Mar</span>
+                        </div>
+                        <div class="city-attractions">
+                            <span class="attraction-tag">Ganga Aarti</span>
+                            <span class="attraction-tag">Kashi Vishwanath</span>
+                            <span class="attraction-tag">Sarnath</span>
+                            <span class="attraction-tag">Ghats</span>
+                        </div>
+                        <button class="btn-city" onclick="alert('Booking feature coming soon for Varanasi!')">
+                            <i class="fas fa-map-marked-alt"></i> Book Trip to Varanasi
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Kolkata -->
+                <div class="city-card" id="kolkata">
+                    <div class="city-image" style="background-image: url('../assets/images/cities/kolkata.jpg')">
+                        <div class="city-badge">Cultural Capital</div>
+                    </div>
+                    <div class="city-content">
+                        <h3 class="city-name">Kolkata</h3>
+                        <p class="city-desc">Cultural hub with colonial architecture, art galleries, and Bengali cuisine
+                        </p>
+                        <div class="city-info">
+                            <span class="city-stat"><i class="fas fa-clock"></i> 3-4 days</span>
+                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> â‚¹1400/day</span>
+                            <span class="city-stat"><i class="fas fa-sun"></i> Oct-Mar</span>
+                        </div>
+                        <div class="city-attractions">
+                            <span class="attraction-tag">Victoria Memorial</span>
+                            <span class="attraction-tag">Howrah Bridge</span>
+                            <span class="attraction-tag">Park Street</span>
+                            <span class="attraction-tag">Dakshineswar</span>
+                        </div>
+                        <button class="btn-city" onclick="alert('Booking feature coming soon for Kolkata!')">
+                            <i class="fas fa-map-marked-alt"></i> Book Trip to Kolkata
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Shimla -->
+                <div class="city-card" id="shimla">
+                    <div class="city-image" style="background-image: url('../assets/images/cities/shimla.jpg')">
+                        <div class="city-badge">Queen of Hills</div>
+                    </div>
+                    <div class="city-content">
+                        <h3 class="city-name">Shimla</h3>
+                        <p class="city-desc">Colonial hill station with snow-capped mountains and scenic toy train rides
+                        </p>
+                        <div class="city-info">
+                            <span class="city-stat"><i class="fas fa-clock"></i> 3-4 days</span>
+                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> â‚¹1800/day</span>
+                            <span class="city-stat"><i class="fas fa-snowflake"></i> Mar-Jun</span>
+                        </div>
+                        <div class="city-attractions">
+                            <span class="attraction-tag">Mall Road</span>
+                            <span class="attraction-tag">Jakhu Temple</span>
+                            <span class="attraction-tag">Kufri</span>
+                            <span class="attraction-tag">Ridge</span>
+                        </div>
+                        <button class="btn-city" onclick="alert('Booking feature coming soon for Shimla!')">
+                            <i class="fas fa-map-marked-alt"></i> Book Trip to Shimla
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Manali -->
+                <div class="city-card" id="manali">
+                    <div class="city-image" style="background-image: url('../assets/images/cities/manali.jpg')">
+                        <div class="city-badge">Adventure Paradise</div>
+                    </div>
+                    <div class="city-content">
+                        <h3 class="city-name">Manali</h3>
+                        <p class="city-desc">Himalayan adventure hub with skiing, trekking, and breathtaking landscapes
+                        </p>
+                        <div class="city-info">
+                            <span class="city-stat"><i class="fas fa-clock"></i> 4-6 days</span>
+                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> â‚¹2000/day</span>
+                            <span class="city-stat"><i class="fas fa-snowflake"></i> Mar-Jun</span>
+                        </div>
+                        <div class="city-attractions">
+                            <span class="attraction-tag">Solang Valley</span>
+                            <span class="attraction-tag">Rohtang Pass</span>
+                            <span class="attraction-tag">Old Manali</span>
+                            <span class="attraction-tag">Hadimba Temple</span>
+                        </div>
+                        <button class="btn-city" onclick="alert('Booking feature coming soon for Manali!')">
+                            <i class="fas fa-map-marked-alt"></i> Book Trip to Manali
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fas fa-city"></i>
+                        <span>Smart<span style="font-weight: 800;">CityGuide</span></span>
+                    </div>
+                    <p class="footer-desc">Your trusted companion for discovering and exploring India's most beautiful
+                        cities.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="cities.html"><i class="fas fa-chevron-right"></i> Cities</a></li>
+                        <li><a href="features.html"><i class="fas fa-chevron-right"></i> Features</a></li>
+                        <li><a href="itinerary.html"><i class="fas fa-chevron-right"></i> Itinerary</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Top Destinations</h4>
+                    <ul class="footer-links">
+                        <li><a href="#delhi"><i class="fas fa-map-marker-alt"></i> Delhi</a></li>
+                        <li><a href="#mumbai"><i class="fas fa-map-marker-alt"></i> Mumbai</a></li>
+                        <li><a href="#goa"><i class="fas fa-map-marker-alt"></i> Goa</a></li>
+                        <li><a href="#jaipur"><i class="fas fa-map-marker-alt"></i> Jaipur</a></li>
+                        <li><a href="#kerala"><i class="fas fa-map-marker-alt"></i> Kerala</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Contact Info</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> pp8995982@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +917069300609</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Mumbai, India</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Smart City Guide. All rights reserved. | Built with â¤ï¸ in India</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

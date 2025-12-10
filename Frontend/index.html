@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,17 +10,13 @@
     <title>Smart City Guide | Explore India's Best Cities</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/fonts.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -34,16 +30,16 @@
 
             <div class="nav-links" id="navLinks">
                 <a href="index.html" class="nav-link active">Home</a>
-                <a href="cities.html" class="nav-link">Cities</a>
-                <a href="features.html" class="nav-link">Features</a>
-                <a href="itinerary.html" class="nav-link">Itinerary</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="pages/cities.html" class="nav-link">Cities</a>
+                <a href="pages/features.html" class="nav-link">Features</a>
+                <a href="pages/itinerary.html" class="nav-link">Itinerary</a>
+                <a href="pages/contact.html" class="nav-link">Contact</a>
 
                 <div class="nav-buttons">
-                    <button class="btn-login" onclick="window.location.href='login.html'">
+                    <button class="btn-login" onclick="window.location.href='pages/login.html'">
                         <i class="fas fa-user"></i> Login
                     </button>
-                    <button class="btn-signup" onclick="window.location.href='signup.html'">
+                    <button class="btn-signup" onclick="window.location.href='pages/signup.html'">
                         <i class="fas fa-user-plus"></i> Sign Up
                     </button>
                 </div>
@@ -76,10 +72,10 @@
                     </div>
 
                     <div class="search-tags">
-                        <span class="tag">🏛️ Heritage Sites</span>
-                        <span class="tag">🏝️ Beach Destinations</span>
-                        <span class="tag">⛰️ Hill Stations</span>
-                        <span class="tag">🌆 Metropolitan Cities</span>
+                        <span class="tag">ðŸ›ï¸ Heritage Sites</span>
+                        <span class="tag">ðŸï¸ Beach Destinations</span>
+                        <span class="tag">â›°ï¸ Hill Stations</span>
+                        <span class="tag">ðŸŒ† Metropolitan Cities</span>
                     </div>
                 </div>
 
@@ -120,8 +116,7 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
                 <!-- Delhi -->
                 <div class="city-card">
-                    <div class="city-image"
-                        style="background-image: url('https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                    <div class="city-image" style="background-image: url('assets/images/cities/delhi.jpg')">
                         <div class="city-badge">Heritage Capital</div>
                     </div>
                     <div class="city-content">
@@ -130,7 +125,7 @@
                             culture</p>
                         <div class="city-info">
                             <span class="city-stat"><i class="fas fa-clock"></i> 3-5 days</span>
-                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> ₹1500/day</span>
+                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> â‚¹1500/day</span>
                             <span class="city-stat"><i class="fas fa-sun"></i> Oct-Mar</span>
                         </div>
                         <div class="city-attractions">
@@ -146,8 +141,7 @@
 
                 <!-- Goa -->
                 <div class="city-card">
-                    <div class="city-image"
-                        style="background-image: url('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                    <div class="city-image" style="background-image: url('assets/images/cities/goa.jpg')">
                         <div class="city-badge">Beach Paradise</div>
                     </div>
                     <div class="city-content">
@@ -155,7 +149,7 @@
                         <p class="city-desc">Sun-kissed beaches, Portuguese heritage, and vibrant nightlife</p>
                         <div class="city-info">
                             <span class="city-stat"><i class="fas fa-clock"></i> 4-7 days</span>
-                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> ₹2000/day</span>
+                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> â‚¹2000/day</span>
                             <span class="city-stat"><i class="fas fa-sun"></i> Nov-Feb</span>
                         </div>
                         <div class="city-attractions">
@@ -171,8 +165,7 @@
 
                 <!-- Jaipur -->
                 <div class="city-card">
-                    <div class="city-image"
-                        style="background-image: url('https://images.unsplash.com/photo-1599661046289-e31897846e41?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                    <div class="city-image" style="background-image: url('assets/images/cities/jaipur.jpg')">
                         <div class="city-badge">Pink City</div>
                     </div>
                     <div class="city-content">
@@ -180,7 +173,7 @@
                         <p class="city-desc">Royal palaces, majestic forts, and colorful bazaars of Rajasthan</p>
                         <div class="city-info">
                             <span class="city-stat"><i class="fas fa-clock"></i> 2-4 days</span>
-                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> ₹1600/day</span>
+                            <span class="city-stat"><i class="fas fa-rupee-sign"></i> â‚¹1600/day</span>
                             <span class="city-stat"><i class="fas fa-sun"></i> Oct-Mar</span>
                         </div>
                         <div class="city-attractions">
@@ -307,21 +300,21 @@
                     <h4>Quick Links</h4>
                     <ul class="footer-links">
                         <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="cities.html"><i class="fas fa-chevron-right"></i> Cities</a></li>
-                        <li><a href="features.html"><i class="fas fa-chevron-right"></i> Features</a></li>
-                        <li><a href="itinerary.html"><i class="fas fa-chevron-right"></i> Itinerary</a></li>
-                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        <li><a href="pages/cities.html"><i class="fas fa-chevron-right"></i> Cities</a></li>
+                        <li><a href="pages/features.html"><i class="fas fa-chevron-right"></i> Features</a></li>
+                        <li><a href="pages/itinerary.html"><i class="fas fa-chevron-right"></i> Itinerary</a></li>
+                        <li><a href="pages/contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4>Top Destinations</h4>
                     <ul class="footer-links">
-                        <li><a href="cities.html#delhi"><i class="fas fa-map-marker-alt"></i> Delhi</a></li>
-                        <li><a href="cities.html#mumbai"><i class="fas fa-map-marker-alt"></i> Mumbai</a></li>
-                        <li><a href="cities.html#goa"><i class="fas fa-map-marker-alt"></i> Goa</a></li>
-                        <li><a href="cities.html#jaipur"><i class="fas fa-map-marker-alt"></i> Jaipur</a></li>
-                        <li><a href="cities.html#kerala"><i class="fas fa-map-marker-alt"></i> Kerala</a></li>
+                        <li><a href="pages/cities.html#delhi"><i class="fas fa-map-marker-alt"></i> Delhi</a></li>
+                        <li><a href="pages/cities.html#mumbai"><i class="fas fa-map-marker-alt"></i> Mumbai</a></li>
+                        <li><a href="pages/cities.html#goa"><i class="fas fa-map-marker-alt"></i> Goa</a></li>
+                        <li><a href="pages/cities.html#jaipur"><i class="fas fa-map-marker-alt"></i> Jaipur</a></li>
+                        <li><a href="pages/cities.html#kerala"><i class="fas fa-map-marker-alt"></i> Kerala</a></li>
                     </ul>
                 </div>
 
@@ -336,13 +329,13 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 Smart City Guide. All rights reserved. | Built with ❤️ in India</p>
+                <p>&copy; 2024 Smart City Guide. All rights reserved. | Built with â¤ï¸ in India</p>
             </div>
         </div>
     </footer>
 
     <!-- JavaScript -->
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
