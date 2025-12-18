@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../assets/css/fonts.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome-fixed.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
@@ -199,93 +199,9 @@
     </style>
 
     <script src="../js/script.js"></script>
-    <script>
-        // Password strength checker
-        document.getElementById('signupPassword').addEventListener('input', (e) => {
-            const password = e.target.value;
-            const strengthBar = document.getElementById('strengthBar');
-            const strengthText = document.getElementById('strengthText');
-
-            let strength = 0;
-            if (password.length >= 8) strength += 25;
-            if (/[a-z]/.test(password)) strength += 25;
-            if (/[A-Z]/.test(password)) strength += 25;
-            if (/[0-9]/.test(password)) strength += 25;
-
-            strengthBar.style.width = strength + '%';
-
-            if (strength <= 25) {
-                strengthBar.style.background = '#f56565';
-                strengthText.textContent = 'Password strength: Weak';
-                strengthText.style.color = '#f56565';
-            } else if (strength <= 50) {
-                strengthBar.style.background = '#ed8936';
-                strengthText.textContent = 'Password strength: Fair';
-                strengthText.style.color = '#ed8936';
-            } else if (strength <= 75) {
-                strengthBar.style.background = '#48bb78';
-                strengthText.textContent = 'Password strength: Good';
-                strengthText.style.color = '#48bb78';
-            } else {
-                strengthBar.style.background = '#38a169';
-                strengthText.textContent = 'Password strength: Strong';
-                strengthText.style.color = '#38a169';
-            }
-        });
-
-        // Form submission
-        document.getElementById('signupForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name = document.getElementById('signupName').value;
-            const email = document.getElementById('signupEmail').value;
-            const phone = document.getElementById('signupPhone').value;
-            const password = document.getElementById('signupPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const agreeTerms = document.getElementById('agreeTerms').checked;
-
-            if (!name || !email || !phone || !password || !confirmPassword) {
-                alert('Please fill in all fields');
-                return;
-            }
-
-            if (password !== confirmPassword) {
-                alert('Passwords do not match!');
-                return;
-            }
-
-            if (password.length < 8) {
-                alert('Password must be at least 8 characters long');
-                return;
-            }
-
-            if (!agreeTerms) {
-                alert('Please agree to Terms & Conditions');
-                return;
-            }
-
-            // Demo successful registration
-            alert(`Account created successfully!\n\nWelcome aboard, ${name}!\n\n(This is demo mode - connect to backend for real registration)`);
-
-            // Redirect to login page
-            setTimeout(() => {
-                window.location.href = 'login.html';
-            }, 1000);
-        });
-
-        function togglePassword(inputId, button) {
-            const input = document.getElementById(inputId);
-            const icon = button.querySelector('i');
-
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.classList.replace('fa-eye', 'fa-eye-slash');
-            } else {
-                input.type = 'password';
-                icon.classList.replace('fa-eye-slash', 'fa-eye');
-            }
-        }
-    </script>
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 
 </html>

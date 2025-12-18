@@ -1,22 +1,12 @@
 """
 Models Package
-SQLAlchemy models
 """
-
 from app.database.config import db
-from .user import User
 from .city import City
+from .user import User
+from .booking import Booking
 from .attraction import Attraction
-from .itinerary import Itinerary
 from .review import Review
 from .favorite import Favorite
 
-__all__ = [
-    'db',
-    'User',
-    'City',
-    'Attraction',
-    'Itinerary',
-    'Review',
-    'Favorite'
-]
+__all__ = ['db', 'City', 'User', 'Booking', 'Attraction', 'Review', 'Favorite']

@@ -1,6 +1,6 @@
 """
-Smart City Guide Backend
-Custom Python implementation with data structures built from scratch
+App Package
 """
+from .main import create_app
 
-__version__ = "1.0.0"
+__all__ = ['create_app']

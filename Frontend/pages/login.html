@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../assets/css/fonts.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome-fixed.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
@@ -159,39 +159,9 @@
     </style>
 
     <script src="../js/script.js"></script>
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-
-            if (!email || !password) {
-                alert('Please fill in all fields');
-                return;
-            }
-
-            // Demo successful login
-            alert(`Login successful! Welcome back, ${email.split('@')[0]}!\n\n(This is demo mode - connect to backend for real authentication)`);
-
-            // Redirect to home page
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 1000);
-        });
-
-        function togglePassword(inputId, button) {
-            const input = document.getElementById(inputId);
-            const icon = button.querySelector('i');
-
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.classList.replace('fa-eye', 'fa-eye-slash');
-            } else {
-                input.type = 'password';
-                icon.classList.replace('fa-eye-slash', 'fa-eye');
-            }
-        }
-    </script>
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 
 </html>

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../assets/css/fonts.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome-fixed.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
@@ -110,7 +110,8 @@
                     <p style="color: #718096; line-height: 1.8; margin-bottom: 1.5rem;">Set your budget and track
                         expenses in real-time. Get recommendations for hotels, restaurants, and activities within your
                         price range.</p>
-                    <button class="btn-city" onclick="alert('Budget tracker coming soon!')"
+                    <button class="btn-city"
+                        onclick="document.getElementById('budgetTrackerDemo').scrollIntoView({behavior: 'smooth'})"
                         style="width: auto; padding: 0.8rem 1.5rem;">
                         <i class="fas fa-calculator"></i> Calculate Budget
                     </button>
@@ -167,6 +168,21 @@
                 </div>
 
             </div>
+        </div>
+    </section>
+
+    <!-- Budget Tracker Demo -->
+    <section class="section" style="background: #f7fafc;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 1rem; color: #2d3748;">
+                    <i class="fas fa-wallet"></i> Try Our Budget Tracker
+                </h2>
+                <p style="font-size: 1.1rem; color: #718096; max-width: 600px; margin: 0 auto;">
+                    Track your travel expenses in real-time and stay within budget
+                </p>
+            </div>
+            <div id="budgetTrackerDemo"></div>
         </div>
     </section>
 
@@ -251,6 +267,13 @@
 
     <!-- JavaScript -->
     <script src="../js/script.js"></script>
+    <script src="../js/budget_tracker.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            BudgetTracker.init(15000, 5);
+            BudgetTracker.renderTracker('budgetTrackerDemo');
+        });
+    </script>
 </body>
 
 </html>

@@ -1,142 +1,107 @@
 """
-Authentication API with PostgreSQL
-User registration, login, and authentication
+Authentication API
+User login and signup
 """
-
-from flask import Blueprint, request, jsonify
-from app.models import db, User
-from app.utils.security import create_token, hash_password, verify_password
-from app.utils.decorators import require_auth, log_request
-from sqlalchemy.exc import IntegrityError
+from flask import Blueprint, jsonify, request
+from app.models import User, db
+from werkzeug.security import generate_password_hash, check_password_hash
+import jwt
+import os
+from datetime import datetime, timedelta
 
 bp = Blueprint('auth', __name__)
+SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret-key')
 
+from functools import wraps
 
-@bp.route('/register', methods=['POST'])
-@log_request
-def register():
-    """User registration endpoint"""
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = None
+        if 'Authorization' in request.headers:
+            auth_header = request.headers['Authorization']
+            if ' ' in auth_header:
+                token = auth_header.split(" ")[1]
+        
+        if not token:
+            return jsonify({'success': False, 'error': 'Token is missing!'}), 401
+        
+        try:
+            data = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+            current_user = User.query.get(data['user_id'])
+            if not current_user:
+                 return jsonify({'success': False, 'error': 'User not found!'}), 401
+        except Exception as e:
+            return jsonify({'success': False, 'error': 'Token is invalid!', 'details': str(e)}), 401
+            
+        return f(current_user, *args, **kwargs)
+    
+    return decorated
+
+@bp.route('/signup', methods=['POST'])
+def signup():
+    """Register new user"""
     try:
         data = request.get_json()
         
-        # Validate required fields
-        required = ['email', 'username', 'password', 'full_name']
-        for field in required:
-            if field not in data:
-                return jsonify({'error': f'Missing required field: {field}'}), 400
+        if not all(k in data for k in ['email', 'username', 'password', 'full_name']):
+            return jsonify({'success': False, 'error': 'Missing required fields'}), 400
         
-        # Check if user already exists
         if User.query.filter_by(email=data['email']).first():
-            return jsonify({'error': 'Email already registered'}), 400
+            return jsonify({'success': False, 'error': 'Email already registered'}), 400
         
         if User.query.filter_by(username=data['username']).first():
-            return jsonify({'error': 'Username already taken'}), 400
+            return jsonify({'success': False, 'error': 'Username already taken'}), 400
         
-        # Create user
         user = User(
             email=data['email'],
             username=data['username'],
-            hashed_password=hash_password(data['password']),
-            full_name=data['full_name'],
-            profile_image=data.get('profile_image'),
-            is_active=True,
-            is_verified=False
+            hashed_password=generate_password_hash(data['password']),
+            full_name=data['full_name']
         )
         
         db.session.add(user)
         db.session.commit()
         
-        # Generate token
-        token = create_token(user.id, user.email)
+        token = jwt.encode({
+            'user_id': user.id,
+            'exp': datetime.utcnow() + timedelta(days=7)
+        }, SECRET_KEY, algorithm='HS256')
         
         return jsonify({
+            'success': True,
             'message': 'User registered successfully',
             'token': token,
             'user': user.to_dict()
         }), 201
-        
-    except IntegrityError:
-        db.session.rollback()
-        return jsonify({'error': 'User already exists'}), 400
     except Exception as e:
         db.session.rollback()
-        return jsonify({'error': f'Registration failed: {str(e)}'}), 500
-
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 @bp.route('/login', methods=['POST'])
-@log_request
 def login():
-    """User login endpoint"""
+    """Login user"""
     try:
         data = request.get_json()
         
-        # Validate input
         if not data.get('email') or not data.get('password'):
-            return jsonify({'error': 'Email and password required'}), 400
+            return jsonify({'success': False, 'error': 'Email and password required'}), 400
         
-        # Find user
         user = User.query.filter_by(email=data['email']).first()
-        if not user:
-            return jsonify({'error': 'Invalid credentials'}), 401
         
-        # Verify password
-        if not verify_password(data['password'], user.hashed_password):
-            return jsonify({'error': 'Invalid credentials'}), 401
+        if not user or not check_password_hash(user.hashed_password, data['password']):
+            return jsonify({'success': False, 'error': 'Invalid credentials'}), 401
         
-        # Check if user is active
-        if not user.is_active:
-            return jsonify({'error': 'Account is inactive'}), 401
-        
-        # Generate token
-        token = create_token(user.id, user.email)
+        token = jwt.encode({
+            'user_id': user.id,
+            'exp': datetime.utcnow() + timedelta(days=7)
+        }, SECRET_KEY, algorithm='HS256')
         
         return jsonify({
+            'success': True,
             'message': 'Login successful',
             'token': token,
             'user': user.to_dict()
         })
-        
     except Exception as e:
-        return jsonify({'error': f'Login failed: {str(e)}'}), 500
-
-
-@bp.route('/me', methods=['GET'])
-@require_auth
-def get_current_user():
-    """Get current user profile"""
-    try:
-        user = User.query.get(request.user_id)
-        if not user:
-            return jsonify({'error': 'User not found'}), 404
-        return jsonify(user.to_dict())
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-
-@bp.route('/me', methods=['PUT'])
-@require_auth
-def update_profile():
-    """Update user profile"""
-    try:
-        data = request.get_json()
-        user = User.query.get(request.user_id)
-        
-        if not user:
-            return jsonify({'error': 'User not found'}), 404
-        
-        # Update allowed fields
-        if 'full_name' in data:
-            user.full_name = data['full_name']
-        if 'profile_image' in data:
-            user.profile_image = data['profile_image']
-        
-        db.session.commit()
-        
-        return jsonify({
-            'message': 'Profile updated successfully',
-            'user': user.to_dict()
-        })
-        
-    except Exception as e:
-        db.session.rollback()
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'success': False, 'error': str(e)}), 500

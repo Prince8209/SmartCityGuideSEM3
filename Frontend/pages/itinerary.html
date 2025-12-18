@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../assets/css/fonts.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome-fixed.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
@@ -75,16 +75,7 @@
                             style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #2d3748;">Destination</label>
                         <select
                             style="width: 100%; padding: 0.8rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
-                            <option>Delhi</option>
-                            <option>Mumbai</option>
-                            <option>Goa</option>
-                            <option>Jaipur</option>
-                            <option>Bangalore</option>
-                            <option>Kerala</option>
-                            <option>Agra</option>
-                            <option>Udaipur</option>
-                            <option>Varanasi</option>
-                            <option>Kolkata</option>
+                            <option>Loading cities...</option>
                         </select>
                     </div>
 
@@ -97,24 +88,32 @@
 
                     <div style="margin-bottom: 1.5rem;">
                         <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #2d3748;">Budget
-                            (â‚¹/day)</label>
+                            (₹/day)</label>
                         <input type="number" value="2000" step="500"
                             style="width: 100%; padding: 0.8rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
                     </div>
 
                     <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #2d3748;">Travel
-                            Style</label>
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #2d3748;">Trip
+                            Category</label>
                         <select
                             style="width: 100%; padding: 0.8rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
-                            <option>Relaxed</option>
-                            <option>Balanced</option>
-                            <option>Adventure-packed</option>
+                            <option value="">All Categories</option>
                         </select>
                     </div>
 
-                    <button onclick="alert('Generated optimized itinerary! (Demo mode)')" class="btn-city"
-                        style="width: 100%; padding: 1rem; margin-bottom: 1rem;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #2d3748;">Travel
+                            Style (Pace)</label>
+                        <select
+                            style="width: 100%; padding: 0.8rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+                            <option value="Relaxed">Relaxed (2 spots/day)</option>
+                            <option value="Balanced" selected>Balanced (3 spots/day)</option>
+                            <option value="Adventure-packed">Packed (4+ spots/day)</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-city" style="width: 100%; padding: 1rem; margin-bottom: 1rem;">
                         <i class="fas fa-magic"></i> Generate Itinerary
                     </button>
 
@@ -135,131 +134,14 @@
                     <h3 style="margin-bottom: 1.5rem; color: #2d3748;"><i class="fas fa-calendar-alt"></i> Your
                         Itinerary</h3>
 
-                    <!-- Day 1 -->
+                    <!-- Placeholder Content -->
                     <div
-                        style="background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
-                        <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-                            <div
-                                style="width: 50px; height: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; margin-right: 1rem;">
-                                DAY 1</div>
-                            <div>
-                                <h4 style="margin-bottom: 0.25rem; color: #2d3748;">Arrival & City Tour</h4>
-                                <p style="color: #718096; font-size: 0.9rem;">Morning to Evening</p>
-                            </div>
-                        </div>
-
-                        <div style="border-left: 3px solid #e2e8f0; padding-left: 1.5rem; margin-left: 1.5rem;">
-                            <div style="margin-bottom: 1.5rem;">
-                                <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
-                                    <i class="fas fa-clock" style="color: #667eea; margin-right: 0.5rem;"></i>
-                                    <strong style="color: #2d3748;">9:00 AM - Arrive at Airport</strong>
-                                </div>
-                                <p style="color: #718096; font-size: 0.95rem; margin-left: 1.8rem;">Check into hotel and
-                                    freshen up</p>
-                            </div>
-
-                            <div style="margin-bottom: 1.5rem;">
-                                <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
-                                    <i class="fas fa-map-marker-alt" style="color: #667eea; margin-right: 0.5rem;"></i>
-                                    <strong style="color: #2d3748;">11:00 AM - India Gate</strong>
-                                </div>
-                                <p style="color: #718096; font-size: 0.95rem; margin-left: 1.8rem;">Visit iconic
-                                    monument and surrounding gardens</p>
-                            </div>
-
-                            <div style="margin-bottom: 1.5rem;">
-                                <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
-                                    <i class="fas fa-utensils" style="color: #667eea; margin-right: 0.5rem;"></i>
-                                    <strong style="color: #2d3748;">1:00 PM - Lunch at Connaught Place</strong>
-                                </div>
-                                <p style="color: #718096; font-size: 0.95rem; margin-left: 1.8rem;">Try authentic Delhi
-                                    street food</p>
-                            </div>
-
-                            <div>
-                                <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
-                                    <i class="fas fa-landmark" style="color: #667eea; margin-right: 0.5rem;"></i>
-                                    <strong style="color: #2d3748;">3:00 PM - Red Fort</strong>
-                                </div>
-                                <p style="color: #718096; font-size: 0.95rem; margin-left: 1.8rem;">Explore UNESCO World
-                                    Heritage Site</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Day 2 -->
-                    <div
-                        style="background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
-                        <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-                            <div
-                                style="width: 50px; height: 50px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; margin-right: 1rem;">
-                                DAY 2</div>
-                            <div>
-                                <h4 style="margin-bottom: 0.25rem; color: #2d3748;">Heritage Sites</h4>
-                                <p style="color: #718096; font-size: 0.9rem;">Full Day Exploration</p>
-                            </div>
-                        </div>
-
-                        <div style="border-left: 3px solid #e2e8f0; padding-left: 1.5rem; margin-left: 1.5rem;">
-                            <div style="margin-bottom: 1.5rem;">
-                                <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
-                                    <i class="fas fa-clock" style="color: #4facfe; margin-right: 0.5rem;"></i>
-                                    <strong style="color: #2d3748;">8:00 AM - Qutub Minar</strong>
-                                </div>
-                                <p style="color: #718096; font-size: 0.95rem; margin-left: 1.8rem;">Visit tallest brick
-                                    minaret in the world</p>
-                            </div>
-
-                            <div style="margin-bottom: 1.5rem;">
-                                <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
-                                    <i class="fas fa-praying-hands" style="color: #4facfe; margin-right: 0.5rem;"></i>
-                                    <strong style="color: #2d3748;">11:00 AM - Lotus Temple</strong>
-                                </div>
-                                <p style="color: #718096; font-size: 0.95rem; margin-left: 1.8rem;">Architectural marvel
-                                    and meditation</p>
-                            </div>
-
-                            <div>
-                                <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
-                                    <i class="fas fa-shopping-bag" style="color: #4facfe; margin-right: 0.5rem;"></i>
-                                    <strong style="color: #2d3748;">3:00 PM - Chandni Chowk</strong>
-                                </div>
-                                <p style="color: #718096; font-size: 0.95rem; margin-left: 1.8rem;">Shop at oldest
-                                    market in Delhi</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Day 3 -->
-                    <div
-                        style="background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-                            <div
-                                style="width: 50px; height: 50px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; margin-right: 1rem;">
-                                DAY 3</div>
-                            <div>
-                                <h4 style="margin-bottom: 0.25rem; color: #2d3748;">Departure</h4>
-                                <p style="color: #718096; font-size: 0.9rem;">Morning</p>
-                            </div>
-                        </div>
-
-                        <div style="border-left: 3px solid #e2e8f0; padding-left: 1.5rem; margin-left: 1.5rem;">
-                            <div>
-                                <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
-                                    <i class="fas fa-plane-departure" style="color: #f093fb; margin-right: 0.5rem;"></i>
-                                    <strong style="color: #2d3748;">10:00 AM - Checkout & Depart</strong>
-                                </div>
-                                <p style="color: #718096; font-size: 0.95rem; margin-left: 1.8rem;">Head to airport for
-                                    return journey</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="text-align: center; margin-top: 2rem;">
-                        <button onclick="alert('Add more days to your itinerary! (Demo)')"
-                            style="padding: 1rem 2rem; background: white; border: 2px dashed #667eea; color: #667eea; border-radius: 12px; font-weight: 600; cursor: pointer; font-size: 1rem;">
-                            <i class="fas fa-plus-circle"></i> Add More Days
-                        </button>
+                        style="text-align: center; padding: 4rem; background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <i class="fas fa-map-marked-alt"
+                            style="font-size: 4rem; color: #e2e8f0; margin-bottom: 1rem;"></i>
+                        <h4 style="color: #4a5568; margin-bottom: 0.5rem;">Ready to Plan?</h4>
+                        <p style="color: #718096;">Select your destination and preferences to generate a custom
+                            itinerary.</p>
                     </div>
                 </div>
 
@@ -320,12 +202,15 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 Smart City Guide. All rights reserved. | Built with â¤ï¸ in India</p>
+                <p>&copy; 2024 Smart City Guide. All rights reserved. | Built with ❤️ in India</p>
             </div>
         </div>
     </footer>
 
     <!-- JavaScript -->
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/itinerary.js"></script>
     <script src="../js/script.js"></script>
 </body>
 

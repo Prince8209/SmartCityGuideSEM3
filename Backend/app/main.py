@@ -1,79 +1,82 @@
 """
-Flask Application with PostgreSQL
-Main entry point for the backend
+Smart City Guide - Flask Application
+Main entry point
 """
 
+
+
+import pymysql
+pymysql.install_as_MySQLdb()
+
 import os
-from flask import Flask
+from flask import Flask, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
-from app.database.config import db, init_db
+from app.database import db, init_db
 
-# Load environment variables
 load_dotenv()
 
-
 def create_app():
-    """
-    Create and configure Flask application
-    """
     app = Flask(__name__)
     
     # Configuration
-    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret-key-change-me')
+    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret-key')
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
         'DATABASE_URL',
-        'postgresql://postgres:postgres@localhost:5432/smart_city_guide'
+        'mysql+pymysql://root:@localhost:3306/smart_city_guide'
     )
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['JSON_SORT_KEYS'] = False
     
-    # Enable CORS for frontend
+    # Enable CORS
     CORS(app, resources={r"/api/*": {"origins": "*"}})
     
     # Initialize database
     init_db(app)
     
     # Register blueprints
-    from app.api import auth, cities, attractions, itineraries, reviews, analytics
+    from app.api import auth, cities, bookings, reviews
     
     app.register_blueprint(auth.bp, url_prefix='/api/auth')
     app.register_blueprint(cities.bp, url_prefix='/api/cities')
-    app.register_blueprint(attractions.bp, url_prefix='/api/attractions')
-    app.register_blueprint(itineraries.bp, url_prefix='/api/itineraries')
-    app.register_blueprint(reviews.bp, url_prefix='/api/reviews')
-    app.register_blueprint(analytics.bp, url_prefix='/api/analytics')
+    app.register_blueprint(bookings.bookings_bp)
+    app.register_blueprint(reviews.reviews_bp, url_prefix='/api/reviews')
     
-    # Health check endpoint
-    @app.route('/api/health')
-    def health_check():
-        return {
-            'status': 'healthy',
-            'message': 'Smart City Guide API is running',
-            'database': 'PostgreSQL'
-        }
+    from app.api.upload import upload_bp
+    app.register_blueprint(upload_bp, url_prefix='/api/upload')
     
     # Root endpoint
     @app.route('/')
     def index():
-        return {
+        return jsonify({
             'name': 'Smart City Guide API',
             'version': '2.0.0',
-            'database': 'PostgreSQL + SQLAlchemy',
+            'database': 'MySQL',
             'endpoints': {
-                'health': '/api/health',
-                'auth': '/api/auth',
                 'cities': '/api/cities',
-                'attractions': '/api/attractions',
-                'itineraries': '/api/itineraries',
-                'reviews': '/api/reviews',
-                'analytics': '/api/analytics'
+                'auth': '/api/auth',
+                'bookings': '/api/bookings'
             }
-        }
+        })
+    
+    # Health check
+    @app.route('/api/health')
+    def health():
+        try:
+            db.session.execute(db.text('SELECT 1'))
+            return jsonify({'status': 'healthy', 'database': 'connected'})
+        except:
+            return jsonify({'status': 'unhealthy', 'database': 'disconnected'}), 500
     
     return app
 
-
 if __name__ == '__main__':
     app = create_app()
+    print("=" * 60)
+    print("🚀 Smart City Guide Backend")
+    print("=" * 60)
+    print("📍 API: http://localhost:5000")
+    print("📊 Database: MySQL")
+    print("💡 Admin: admin@smartcityguide.com / admin123")
+    print("=" * 60)
     app.run(debug=True, host='0.0.0.0', port=5000)

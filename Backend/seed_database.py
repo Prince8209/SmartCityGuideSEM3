@@ -1,117 +1,55 @@
 """
-Seed Database Script for PostgreSQL
-Populate database with initial data
+Database Seeding Script
+Creates tables and loads sample data
 """
-
-import json
+import pymysql
 import sys
-from pathlib import Path
-
-# Add parent directory to path
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, '.')
 
 from app.main import create_app
-from app.models import db, City, Attraction
+from app.database import db
 
+app = create_app()
 
-def seed_cities():
-    """Seed cities from JSON file"""
-    print("Seeding cities...")
+with app.app_context():
+    print("Dropping existing tables...")
+    try:
+        db.session.execute(db.text('SET FOREIGN_KEY_CHECKS = 0'))
+        db.session.execute(db.text('DROP TABLE IF EXISTS favorites'))
+        db.session.execute(db.text('DROP TABLE IF EXISTS reviews'))
+        db.session.execute(db.text('DROP TABLE IF EXISTS bookings'))
+        db.session.execute(db.text('DROP TABLE IF EXISTS attractions'))
+        db.session.execute(db.text('DROP TABLE IF EXISTS cities'))
+        db.session.execute(db.text('DROP TABLE IF EXISTS users'))
+        db.session.execute(db.text('SET FOREIGN_KEY_CHECKS = 1'))
+        db.session.commit()
+    except Exception as e:
+        print(f"Error dropping tables: {e}")
+        db.session.rollback()
+
+    print("Creating database tables...")
+    db.create_all()
+    print("✓ Tables created")
     
-    seed_file = Path(__file__).parent / "seed_data" / "cities_seed.json"
+    # Load sample data from SQL file
+    print("Loading sample data...")
+    with open('sample_data.sql', 'r', encoding='utf-8') as f:
+        sql = f.read()
     
-    with open(seed_file, 'r', encoding='utf-8') as f:
-        cities_data = json.load(f)
+    # Remove comments and split statements
+    lines = [l for l in sql.splitlines() if not l.strip().startswith('--')]
+    clean_sql = '\n'.join(lines)
+    statements = [s.strip() for s in clean_sql.split(';') if s.strip()]
     
-    for city_data in cities_data:
-        # Check if city already exists
-        existing = City.query.filter_by(name=city_data['name']).first()
-        if existing:
-            print(f"  - City already exists: {city_data['name']}")
-            continue
-        
-        city = City(**city_data)
-        db.session.add(city)
-        print(f"  ✓ Created city: {city.name}")
+    for stmt in statements:
+        if stmt and 'INSERT' in stmt.upper():
+            try:
+                # print(f"Executing: {stmt[:50]}...")
+                db.session.execute(db.text(stmt))
+            except Exception as e:
+                print(f"Warning: {e}")
+                print(f"Statement: {stmt[:100]}...")
     
     db.session.commit()
-    print(f"Seeded {len(cities_data)} cities")
-
-
-def seed_attractions():
-    """Seed sample attractions"""
-    print("Seeding attractions...")
-    
-    # Get Delhi
-    delhi = City.query.filter_by(name='Delhi').first()
-    if delhi:
-        attractions_data = [
-            {
-                'city_id': delhi.id,
-                'name': 'Red Fort',
-                'description': 'Historic fort and UNESCO World Heritage Site',
-                'category': 'heritage',
-                'entry_fee': 50,
-                'opening_hours': '9:00 AM - 5:00 PM',
-                'latitude': 28.6562,
-                'longitude': 77.2410
-            },
-            {
-                'city_id': delhi.id,
-                'name': 'Qutub Minar',
-                'description': 'Tallest brick minaret in the world',
-                'category': 'heritage',
-                'entry_fee': 30,
-                'opening_hours': '7:00 AM - 5:00 PM',
-                'latitude': 28.5244,
-                'longitude': 77.1855
-            },
-            {
-                'city_id': delhi.id,
-                'name': 'India Gate',
-                'description': 'War memorial and iconic landmark',
-                'category': 'monument',
-                'entry_fee': 0,
-                'opening_hours': 'Open 24 hours',
-                'latitude': 28.6129,
-                'longitude': 77.2295
-            }
-        ]
-        
-        for attr_data in attractions_data:
-            # Check if attraction already exists
-            existing = Attraction.query.filter_by(
-                city_id=attr_data['city_id'],
-                name=attr_data['name']
-            ).first()
-            if existing:
-                print(f"  - Attraction already exists: {attr_data['name']}")
-                continue
-            
-            attraction = Attraction(**attr_data)
-            db.session.add(attraction)
-            print(f"  ✓ Created attraction: {attraction.name}")
-        
-        db.session.commit()
-    
-    print("Seeded attractions")
-
-
-if __name__ == '__main__':
-    print("=" * 50)
-    print("Smart City Guide - Database Seeding")
-    print("=" * 50)
-    
-    app = create_app()
-    
-    with app.app_context():
-        # Create all tables
-        db.create_all()
-        print("✓ Database tables created")
-        
-        # Seed data
-        seed_cities()
-        seed_attractions()
-    
-    print("\n✓ Database seeding completed!")
-    print("=" * 50)
+    print("✓ Database seeded successfully")
+    print("\nDatabase setup complete!")

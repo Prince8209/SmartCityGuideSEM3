@@ -55,3 +55,30 @@ def log_request(f):
         return f(*args, **kwargs)
     
     return decorated_function
+
+
+def require_admin(f):
+    """
+    Decorator to require admin authentication
+    Must be used after @require_auth
+    """
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        from app.models import User
+        
+        # require_auth should have already set user_id
+        if not hasattr(request, 'user_id'):
+            return jsonify({'error': 'Authentication required'}), 401
+        
+        # Check if user is admin
+        user = User.query.get(request.user_id)
+        if not user:
+            return jsonify({'error': 'User not found'}), 404
+        
+        if not user.is_administrator():
+            return jsonify({'error': 'Admin privileges required'}), 403
+        
+        return f(*args, **kwargs)
+    
+    return decorated_function
+
