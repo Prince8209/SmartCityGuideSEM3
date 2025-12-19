@@ -6,7 +6,7 @@ const API_CONFIG = {
     // Check if running on localhost, otherwise use production URL (to be updated after deployment)
     BASE_URL: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? 'http://127.0.0.1:5000/api'
-        : 'https://smart-city-guide-backend.onrender.com/api', // Placeholder - Update this after deploying backend
+        : 'https://smartcityguidesem3.onrender.com/api', // Authentic Render URL
     ENDPOINTS: {
         // Cities
         CITIES: '/cities',
